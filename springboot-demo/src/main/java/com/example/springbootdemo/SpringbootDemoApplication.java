@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.example.springbootdemo.mapper")
+//@EnableSwagger2
 public class SpringbootDemoApplication {
 
     public static void main(String[] args) {

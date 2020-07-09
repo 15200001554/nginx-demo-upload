@@ -1,6 +1,8 @@
 package com.example.springbootdemo.controller;
 
+import com.example.springbootdemo.util.NfsTransferFile;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,6 +15,7 @@ import java.util.UUID;
  * 文件上传
  */
 @RestController
+@RequestMapping("/user")
 public class FileController {
 
     @PostMapping(value = "/fileUpload")
@@ -36,4 +39,14 @@ public class FileController {
         //返回图片名称
         return fileName;
     }
+    @PostMapping(value = "/fileUploadMy")
+    public String  fileUploadMy(@RequestParam(value = "file") MultipartFile file) {
+        if (file.isEmpty()) {
+            System.out.println("请选择图片");
+        }
+        String s = NfsTransferFile.uploadFileToNfs(file);
+       return s;
+    }
+
+
 }
